@@ -1,0 +1,17 @@
+\name{create_ggtheme}
+\alias{create_ggtheme}
+\title{Create theme for ggplot2}
+\usage{
+create_ggtheme(theme = "xkcd")
+}
+\description{
+This wrapper is based on my favourite ggplot2 themes
+}
+\details{
+'xkcd' from
+http://drunks-and-lampposts.com/2012/10/02/clegg-vs-pleb-an-xkcd-esque-chart/
+
+'blank' from
+http://is-r.tumblr.com/post/32728434389/a-replacement-for-theme-blank
+}
+
