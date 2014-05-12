@@ -18,7 +18,7 @@ create_ggtheme <- function(theme = "xkcd") {
                           axis.text.x = element_text(colour="black"),
                           text = element_text(size=16, family="Humor Sans"))
     
-  } else if (theme == "empty") {
+  } else if (theme == "blank") {
     
     output_theme <- theme_bw()
     output_theme$line <- element_blank()
