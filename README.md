@@ -16,7 +16,6 @@ This package depends on the following packages:
 ```
 require(devtools)
 install_github("woobe/rPlotter")
-
 ```
 
 ## Usage Example
