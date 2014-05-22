@@ -5,11 +5,11 @@ A collection of wrapper functions for graphics. The objective of this package is
 
 ## Dependencies
 
-This package depends the following packages:
-1. ggplot2 (available on CRAN)
-2. stringr (available on CRAN)
-3. reshape2 (available on CRAN)
-4. EBImage (available on Bioconductor)
+This package depends on the following packages:
+- ggplot2 (available on CRAN)
+- stringr (available on CRAN)
+- reshape2 (available on CRAN)
+- EBImage (available on Bioconductor)
 
 ## Installation
 
