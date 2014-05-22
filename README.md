@@ -20,7 +20,7 @@ install_github("woobe/rPlotter")
 
 ## Usage Example
 
-### Extract colors from an online image
+### Extracting colors from an online image for a custom palette
 
 ```
 library(rPlotter)
@@ -32,3 +32,9 @@ hist(Nile, breaks = 5, col = pal_r, main = "Palette based on R Logo")
 
 ![example1](http://i.imgur.com/41Q40Hk.png)
 
+## Credits
+
+- Original K-means Palette by dsparks https://gist.github.com/dsparks/3980277
+- 'xkcd' theme from http://drunks-and-lampposts.com/2012/10/02/clegg-vs-pleb-an-xkcd-esque-chart/  
+- 'blank' theme from http://is-r.tumblr.com/post/32728434389/a-replacement-for-theme-blank
+- Radar chart from http://statisticstoproveanything.blogspot.co.uk/2013/11/spider-web-plots-in-r.html
