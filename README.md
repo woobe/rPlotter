@@ -16,6 +16,7 @@ This package depends on the following packages:
 ```
 require(devtools)
 install_github("woobe/rPlotter")
+
 ```
 
 ## Usage Example
@@ -24,13 +25,28 @@ install_github("woobe/rPlotter")
 
 ```
 library(rPlotter)
+```
+
+```
+## Using the R Logo
 pal_r <- extract_colours("http://developer.r-project.org/Logo/Rlogo-1.png")
 par(mfrow = c(1,2))
 pie(rep(1, 5), col = pal_r, main = "Palette based on R Logo")
 hist(Nile, breaks = 5, col = pal_r, main = "Palette based on R Logo")
 ```
 
-![example1](http://i.imgur.com/41Q40Hk.png)
+![output_1a](http://i.imgur.com/41Q40Hk.png)
+
+```
+## Using a poster from the movie "Kill Bill"
+pal_kb <- extract_colours("http://www.moviegoods.com/Assets/product_images/1010/477803.1010.A.jpg")
+par(mfrow = c(1,2))
+pie(rep(1, 5), col = pal_kb, main = "Palette based on Kill Bill")
+hist(Nile, breaks = 5, col = pal_kb, main = "Palette based on Kill Bill")
+```
+
+![output_1b](http://i.imgur.com/XUqOTSk.png)
+
 
 ## Credits
 
