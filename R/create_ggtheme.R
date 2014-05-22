@@ -1,13 +1,16 @@
-#' Create theme for ggplot2
+#' Create customised themes for ggplot2 object
 #'
-#' This wrapper is based on my favourite ggplot2 themes
+#' This function creates a ggplot2 theme object based on my favourite templates.
 #' 
-#' 'xkcd' from http://drunks-and-lampposts.com/2012/10/02/clegg-vs-pleb-an-xkcd-esque-chart/  
+#' @param theme The name of the temaplate (blank, xkcd, more to come ...)
 #' 
-#' 'blank' from http://is-r.tumblr.com/post/32728434389/a-replacement-for-theme-blank
+#' @examples
+#' theme_blank <- create_ggtheme("blank")
+#' theme_xkcd <- create_ggtheme("xkcd")
 #' 
+ 
 
-create_ggtheme <- function(theme = "xkcd") {
+create_ggtheme <- function(theme = "blank") {
   
   if (theme == "xkcd") {
     
