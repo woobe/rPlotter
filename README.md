@@ -18,9 +18,7 @@ require(devtools)
 install_github("woobe/rPlotter")
 ```
 
-## Usage Example
-
-### Extracting colors from an online image for a custom palette
+## Examples
 
 ```
 library(rPlotter)
