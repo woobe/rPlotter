@@ -7,7 +7,7 @@ extract_colours(url_img = "http://developer.r-project.org/Logo/Rlogo-1.png",
   num_col = 5, nme_pal = "custom_palette")
 }
 \arguments{
-\item{url_img}{URL of the image (can be PNG, JPG, JPEG, GIF, BMP)}
+\item{url_img}{URL of the image (can be PNG, JPG, JPEG, TIFF)}
 
 \item{num_col}{Number of dominant colours to be extracted (default = 5)}
 
@@ -29,5 +29,11 @@ pal_kb <- extract_colours("http://www.moviegoods.com/Assets/product_images/1010/
 par(mfrow = c(1,2))
 pie(rep(1, 5), col = pal_kb, main = "Palette based on Kill Bill")
 hist(Nile, breaks = 5, col = pal_kb, main = "Palette based on Kill Bill")
+
+Example 1c - Using Homer Simpson
+pal_s <- extract_colours("http://haphappy.com/wp-content/uploads/2011/03/homerbeer2.png")
+par(mfrow = c(1,2))
+pie(rep(1, 5), col = pal_s, main = "Palette based on Simpsons")
+hist(Nile, breaks = 5, col = pal_s, main = "Palette based on Simpsons")
 }
 

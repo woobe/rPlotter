@@ -3,7 +3,7 @@
 #' This function downloads an image and extracts the dominant colours from it. 
 #' The code is based on dsparks' gist (https://gist.github.com/dsparks/3980277).
 #' 
-#' @param url_img URL of the image (can be PNG, JPG, JPEG, GIF, BMP)
+#' @param url_img URL of the image (can be PNG, JPG, JPEG, TIFF)
 #' @param num_col Number of dominant colours to be extracted (default = 5)
 #' @param nme_pal Name of the new palette (default = "custom_palette")
 #' 
@@ -20,6 +20,12 @@
 #' pie(rep(1, 5), col = pal_kb, main = "Palette based on Kill Bill")
 #' hist(Nile, breaks = 5, col = pal_kb, main = "Palette based on Kill Bill")
 #' 
+#' Example 1c - Using Homer Simpson
+#' pal_s <- extract_colours("http://haphappy.com/wp-content/uploads/2011/03/homerbeer2.png")
+#' par(mfrow = c(1,2))
+#' pie(rep(1, 5), col = pal_s, main = "Palette based on Simpsons")
+#' hist(Nile, breaks = 5, col = pal_s, main = "Palette based on Simpsons")
+
 
 extract_colours <- function(url_img = "http://developer.r-project.org/Logo/Rlogo-1.png", 
                      num_col = 5, nme_pal = "custom_palette") {
@@ -27,10 +33,13 @@ extract_colours <- function(url_img = "http://developer.r-project.org/Logo/Rlogo
   ## Assign a temp file name based on URL
   tmp_nme <- switch(str_sub(url_img, start = -3),
                     jpg = "temp_pic.jpg",
+                    JPG = "temp_pic.jpg",
                     epg = "temp_pic.jpg",
+                    EPG = "temp_pic.jpg",
                     png = "temp_pic.png",
-                    bmp = "temp_pic.bmp",
-                    gif = "temp_pic.gif")
+                    PNG = "temp_pic.png",
+                    tiff = "temp_pic.tiff",
+                    TIFF = "temp_pic.tiff")
   
   ## Get a local copy
   download.file(url_img, tmp_nme, mode = "wb")
