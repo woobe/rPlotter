@@ -22,7 +22,7 @@
 #' 
 
 phylo_colours <- function(img_file = "http://developer.r-project.org/Logo/Rlogo-1.png", 
-                     num_col = 5, nme_pal = "custom_palette") {
+                     num_col = 5, nme_pal = "custom_palette", rsize=100) {
   
   ## Assign a temp file name based on URL
   #tmp_nme <- switch(str_sub(img_file, start = -3),
@@ -39,11 +39,11 @@ phylo_colours <- function(img_file = "http://developer.r-project.org/Logo/Rlogo-
   img <- readImage(img_file)
     
   ## Resize Image (make it smaller so the remaining tasks run faster)  
-  if (max(dim(img)[1:2]) > 500) {
+  if (max(dim(img)[1:2]) > rsize) {
     if (dim(img)[1] > dim(img)[2]) {
-      img <- resize(img, w = 500)
+      img <- resize(img, w = rsize)
     } else {
-      img <- resize(img, h = 500)
+      img <- resize(img, h = rsize)
     }
   }
   
@@ -56,7 +56,7 @@ phylo_colours <- function(img_file = "http://developer.r-project.org/Logo/Rlogo-
   
   ## Cluster colours into colour-gram
   
-  col_clust<-
+  col_dists<-dist(img_rgb[,3:5])
   
   ## Detect dominant colours with kmeans (multiple starts)
   col_dom <- kmeans(img_rgb[, 3:5], centers = num_col, nstart = 5)
