@@ -53,10 +53,18 @@ phylo_colours <- function(img_file = "http://developer.r-project.org/Logo/Rlogo-
   ## Reshape
   img_rgb <- reshape(img_melt, timevar = "Var3", idvar = c("Var1", "Var2"), direction = "wide")
   img_rgb$Var1 <- -img_rgb$Var1
+  just_cols<-unique(img_rgb[,3:5])
   
   ## Cluster colours into colour-gram
   
   col_dists<-dist(img_rgb[,3:5])
+  
+  col_clust<-hclust(col_dists, "average")
+  col_tree<-as.phylo(col_clust)
+  
+  scatterplot3d(img_rgb[,3:5],pch=19,color=rgb(img_rgb[,3:5]))
+  cloud(value.1~value.2*value.3,img_rgb,pch=19,col=rgb(img_rgb[,3:5]),
+        xlab="Green",ylab="Blue",zlab="Red")
   
   ## Detect dominant colours with kmeans (multiple starts)
   col_dom <- kmeans(img_rgb[, 3:5], centers = num_col, nstart = 5)
@@ -73,5 +81,13 @@ library(fastcluster)
 library(stringr)
 library(EBImage)
 library(reshape2)
+library(scatterplot3d)
+library(lattice)
+library(animation)
+library(ape)
 img_file<-"http://upload.wikimedia.org/wikipedia/commons/5/53/MalePeacockSpider.jpg"
 setwd("/home/annarussell/Temp")
+
+saveGIF(for (i in seq(0,360,by=20)) print(cloud(value.1~value.2*value.3,img_rgb,pch=19,col=rgb(img_rgb[,3:5]),
+      xlab="Green",ylab="Blue",zlab="Red", screen=list(z=i,x=-60))),
+      )
