@@ -4,14 +4,12 @@
 \title{Detect and extract dominant colours from an image}
 \usage{
 extract_colours(url_img = "http://developer.r-project.org/Logo/Rlogo-1.png",
-  num_col = 5, nme_pal = "custom_palette")
+  num_col = 5)
 }
 \arguments{
-\item{url_img}{URL of the image (can be PNG, JPG, JPEG, TIFF)}
+\item{url_img}{URL of the image (can be PNG, JPG, JPEG, TIFF) or a local file}
 
 \item{num_col}{Number of dominant colours to be extracted (default = 5)}
-
-\item{nme_pal}{Name of the new palette (default = "custom_palette")}
 }
 \description{
 This function downloads an image and extracts the dominant colours from it.
