@@ -18,9 +18,7 @@ require(devtools)
 install_github("woobe/rPlotter")
 ```
 
-## Usage Example
-
-### Extracting colors from an online image for a custom palette
+## Examples
 
 ```
 library(rPlotter)
@@ -46,6 +44,15 @@ hist(Nile, breaks = 5, col = pal_kb, main = "Palette based on Kill Bill")
 
 ![output_1b](http://i.imgur.com/XUqOTSk.png)
 
+```
+## Using Homer Simpson
+pal_s <- extract_colours("http://haphappy.com/wp-content/uploads/2011/03/homerbeer2.png")
+par(mfrow = c(1,2))
+pie(rep(1, 5), col = pal_s, main = "Palette based on Simpsons")
+hist(Nile, breaks = 5, col = pal_s, main = "Palette based on Simpsons")
+```
+
+![output_1c](http://i.imgur.com/BiNAO9H.png)
 
 ## Credits
 
