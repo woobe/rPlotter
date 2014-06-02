@@ -5,7 +5,9 @@
 #' @param inp_col Colours input as names or hex code
 #'
 #' @examples
-#' To be updated.
+#' set.seed(1234)
+#' pal_pf <- extract_colours("http://www.scoutlondon.com/blog/wp-content/uploads/2012/05/Pulp-Fiction.jpg")
+#' display_colours(pal_pf)
 
 display_colours <- function(inp_col) {
 
