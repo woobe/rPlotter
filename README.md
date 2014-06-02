@@ -15,33 +15,25 @@ This package depends on the following packages:
 
 ## Installation
 
-### Packages on CRAN
-
 ```
+## CRAN Packages
 install.packages(c("ggplot2", "stringr", "reshape2", "dichromat"))
-```
 
-### Packages on Biocondunctor
-
-```
+## EBImage
 source("http://bioconductor.org/biocLite.R")
 biocLite("EBImage")
-```
 
-### Packages on GitHub
+## Packages on GitHub
+library(devtools)
+install_github("ramnathv/rblocks")
 
+## And finally ...
+nstall_github("woobe/rPlotter")
 ```
-devtools::install_github("ramnathv/rblocks")
-```
-
-### Finally, rPlotter
-
-```
-devtools::install_github("woobe/rPlotter")
-```
-
 
 ## Example: extract_colours(...)
+
+This function extracts dominant colours from images and then returns colour hex code.
 
 ```
 library(rPlotter)
@@ -79,6 +71,8 @@ hist(Nile, breaks = 5, col = pal_s, main = "Palette based on Simpsons")
 
 ## Example: display_colours(...)
 
+This function displays colours as rblocks.
+
 ```
 set.seed(1234)
 pal_pf <- extract_colours("http://www.scoutlondon.com/blog/wp-content/uploads/2012/05/Pulp-Fiction.jpg")
@@ -88,6 +82,8 @@ display_colours(pal_pf)
 ![output_disp](http://i.imgur.com/tpsealV.png)
 
 ## Example: simulate_colours(...)
+
+The functions simulates three types of colour blindness and then displays the simulated colours as rblocks.
 
 ```
 set.seed(1234)
