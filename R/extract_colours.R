@@ -48,7 +48,7 @@ extract_colours <- function(
   img_rgb$Var1 <- -img_rgb$Var1
   
   ## Detect dominant colours with kmeans (multiple starts)
-  col_dom <- kmeans(img_rgb[, 3:5], centers = num_col, nstart = 5)
+  col_dom <- kmeans(img_rgb[, 3:5], centers = num_col, nstart = 3, iter.max = 100)
   
   ## Return k-means centers as RGB colours
   cus_pal <- sort(rgb(col_dom$centers))
