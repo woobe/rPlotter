@@ -9,6 +9,7 @@ This package depends on the following packages:
 - ggplot2 (available on CRAN)
 - stringr (available on CRAN)
 - reshape2 (available on CRAN)
+- dichromat (available on CRAN)
 - EBImage (available on Bioconductor)
 - rblocks (available on GitHub)
 
@@ -17,7 +18,7 @@ This package depends on the following packages:
 ### Packages on CRAN
 
 ```
-install.packages(c("ggplot2", "stringr", "reshape2"))
+install.packages(c("ggplot2", "stringr", "reshape2", "dichromat"))
 ```
 
 ### Packages on Biocondunctor
@@ -39,14 +40,12 @@ devtools::install_github("ramnathv/rblocks")
 devtools::install_github("woobe/rPlotter")
 ```
 
-## Examples
+
+## Example: extract_colours(...)
 
 ```
 library(rPlotter)
 ```
-
-### Extracting Colours from Images
-
 ```
 ## Using the R Logo
 pal_r <- extract_colours("http://developer.r-project.org/Logo/Rlogo-1.png")
@@ -78,15 +77,25 @@ hist(Nile, breaks = 5, col = pal_s, main = "Palette based on Simpsons")
 ![output_1c](http://i.imgur.com/BiNAO9H.png)
 
 
-### Displaying Colours from Palette
+## Example: display_colours(...)
 
 ```
-pal_kb <- extract_colours("http://www.moviegoods.com/Assets/product_images/1010/477803.1010.A.jpg")
-display_colours(pal_kb)
+set.seed(1234)
+pal_pf <- extract_colours("http://www.scoutlondon.com/blog/wp-content/uploads/2012/05/Pulp-Fiction.jpg")
+display_colours(pal_pf)
 ```
 
-![output_2a](http://i.imgur.com/lWv763f.png)
+![output_disp](http://i.imgur.com/tpsealV.png)
 
+## Example: simulate_colours(...)
+
+```
+set.seed(1234)
+pal_pf <- extract_colours("http://www.scoutlondon.com/blog/wp-content/uploads/2012/05/Pulp-Fiction.jpg")
+simulate_colours(pal_pf)
+```
+
+![output_sim](http://i.imgur.com/xhQsb5y.png)
 
 ## Related Blog Posts
 
