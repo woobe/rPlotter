@@ -30,14 +30,14 @@ mpd_select_colours <- function(pal, sat.thresh = NULL, light.thresh = NULL, dark
   ## get rid of light colours if desired
   if (!is.null(light.thresh)) {
     ## convert light thresholds from proportions into L*A*B* scale
-    light.thresh <- ceiling(light.thresh*100)
-    cols.LAB <- cols.LAB[cols.LAB[,1] > light.thresh,] 
+    light.thresh <- ceiling((1-light.thresh)*100)
+    cols.LAB <- cols.LAB[cols.LAB[,1] < light.thresh,] 
   }
   ## get rid of dark colours if desired
   if (!is.null(dark.thresh)) {
     ## convert light thresholds from proportions into L*A*B* scale (perceptual)
     dark.thresh <- ceiling(dark.thresh*100)
-    cols.LAB <- cols.LAB[cols.LAB[,1] < dark.thresh,] 
+    cols.LAB <- cols.LAB[cols.LAB[,1] > dark.thresh,] 
   }
   if (nrow(cols.LAB) < 2) {
     stop("Too few colours after thresholding")  
@@ -58,7 +58,7 @@ mpd_select_colours <- function(pal, sat.thresh = NULL, light.thresh = NULL, dark
     new_pals <- apply(new_pals_index, 2, function(x) rownames(new_pals_index)[x])
     new_pals <- lapply(seq_len(ncol(new_pals)), function(x) new_pals[,x])
   } else {
-    col_unique <- col_unique[rank(col_mpd[col_unique]) <= nreturn]
+    col_unique <- col_unique[rank(-col_mpd[col_unique]) <= nreturn]
     if (nreturn > 1) {
       new_pals_index <- apply(col_samp[col_unique,], 1, function(x) x==1)
       new_pals <- apply(new_pals_index, 2, function(x) rownames(new_pals_index)[x])
