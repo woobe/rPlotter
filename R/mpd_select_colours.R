@@ -1,3 +1,5 @@
+require(picante)
+require(colorspace)
 #' Select colours from a palette to maximize perceptual distance between the colours
 #' 
 #' This function takes a palette as a character vector of hexidecimal colours, and returns a smaller palette, 
