@@ -9,23 +9,35 @@ This package depends on the following packages:
 - ggplot2 (available on CRAN)
 - stringr (available on CRAN)
 - reshape2 (available on CRAN)
+- dichromat (available on CRAN)
 - EBImage (available on Bioconductor)
+- rblocks (available on GitHub)
 
 ## Installation
 
 ```
-require(devtools)
-install_github("woobe/rPlotter")
+## CRAN Packages
+install.packages(c("ggplot2", "stringr", "reshape2", "dichromat"))
+
+## EBImage
+source("http://bioconductor.org/biocLite.R")
+biocLite("EBImage")
+
+## Packages on GitHub
+library(devtools)
+install_github("ramnathv/rblocks")
+
+## And finally ...
+nstall_github("woobe/rPlotter")
 ```
 
-## Usage Example
+## Example: extract_colours(...)
 
-### Extracting colors from an online image for a custom palette
+This function extracts dominant colours from images and then returns colour hex code.
 
 ```
 library(rPlotter)
 ```
-
 ```
 ## Using the R Logo
 pal_r <- extract_colours("http://developer.r-project.org/Logo/Rlogo-1.png")
@@ -46,10 +58,54 @@ hist(Nile, breaks = 5, col = pal_kb, main = "Palette based on Kill Bill")
 
 ![output_1b](http://i.imgur.com/XUqOTSk.png)
 
+```
+## Using Homer Simpson
+pal_s <- extract_colours("http://haphappy.com/wp-content/uploads/2011/03/homerbeer2.png")
+par(mfrow = c(1,2))
+pie(rep(1, 5), col = pal_s, main = "Palette based on Simpsons")
+hist(Nile, breaks = 5, col = pal_s, main = "Palette based on Simpsons")
+```
+
+![output_1c](http://i.imgur.com/BiNAO9H.png)
+
+
+## Example: display_colours(...)
+
+This function displays colours as rblocks.
+
+```
+set.seed(1234)
+pal_pf <- extract_colours("http://www.scoutlondon.com/blog/wp-content/uploads/2012/05/Pulp-Fiction.jpg")
+display_colours(pal_pf)
+```
+
+![output_disp](http://i.imgur.com/tpsealV.png)
+
+## Example: simulate_colours(...)
+
+The functions simulates three types of colour blindness and then displays the simulated colours as rblocks.
+
+```
+set.seed(1234)
+pal_pf <- extract_colours("http://www.scoutlondon.com/blog/wp-content/uploads/2012/05/Pulp-Fiction.jpg")
+simulate_colours(pal_pf)
+```
+
+![output_sim](http://i.imgur.com/xhQsb5y.png)
+
+## Related Blog Posts
+
+- [Towards (Yet) Another R Colour Palette Generator (27/05/2014)](http://bit.ly/bib_colour1)
+
+![blog_1a](http://i.imgur.com/YwCy6lZ.png)
+
 
 ## Credits
 
 - Original K-means Palette by dsparks https://gist.github.com/dsparks/3980277
+- [Karthik Ram](https://github.com/karthik) for the original [wesanderson](https://github.com/karthik/wesanderson) palette generator.
+- [Russell Dinnage](https://github.com/rdinnager) and [Noam Ross](https://github.com/noamross) for new ideas and suggestions.
+- [Ramnath Vaidyanathan](https://github.com/ramnathv) for [rblocks](https://github.com/ramnathv/rblocks).
 - 'xkcd' theme from http://drunks-and-lampposts.com/2012/10/02/clegg-vs-pleb-an-xkcd-esque-chart/  
 - 'blank' theme from http://is-r.tumblr.com/post/32728434389/a-replacement-for-theme-blank
 - Radar chart from http://statisticstoproveanything.blogspot.co.uk/2013/11/spider-web-plots-in-r.html
