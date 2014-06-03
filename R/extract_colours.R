@@ -26,17 +26,17 @@
 #' hist(Nile, breaks = 5, col = pal_s, main = "Palette based on Simpsons")
 
 extract_colours <- function(
-  url_img = "http://developer.r-project.org/Logo/Rlogo-1.png", num_col = 5) {
+  url_img = "http://developer.r-project.org/Logo/Rlogo-1.png", num_col = 5, rsize = 100) {
   
   ## Read Image
   img <- readImage(url_img) # local file or url
   
   ## Resize Image (make it smaller so the remaining tasks run faster)  
-  if (max(dim(img)[1:2]) > 100) {
+  if (max(dim(img)[1:2]) > rsize) {
     if (dim(img)[1] > dim(img)[2]) {
-      img <- resize(img, w = 100)
+      img <- resize(img, w = rsize)
     } else {
-      img <- resize(img, h = 100)
+      img <- resize(img, h = rsize)
     }
   }
   
