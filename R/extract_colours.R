@@ -5,6 +5,9 @@
 #' 
 #' @param url_img URL of the image (can be PNG, JPG, JPEG, TIFF) or a local file
 #' @param num_col Number of dominant colours to be extracted (default = 5)
+#' @param rsize Size to reduce original image to, for further processing. This is the size, in pixels, 
+#' for the largest dimension, from which colours are extracted. Please be careful with this option, as setting it 
+#' too high can result in an extremely large processing time (or even running out of physical memory).
 #' 
 #' @examples
 #' Example 1a - Using the R logo to create a 5-colour palette
@@ -26,17 +29,17 @@
 #' hist(Nile, breaks = 5, col = pal_s, main = "Palette based on Simpsons")
 
 extract_colours <- function(
-  url_img = "http://developer.r-project.org/Logo/Rlogo-1.png", num_col = 5) {
+  url_img = "http://developer.r-project.org/Logo/Rlogo-1.png", num_col = 5, rsize = 100) {
   
   ## Read Image
   img <- readImage(url_img) # local file or url
   
   ## Resize Image (make it smaller so the remaining tasks run faster)  
-  if (max(dim(img)[1:2]) > 100) {
+  if (max(dim(img)[1:2]) > rsize) {
     if (dim(img)[1] > dim(img)[2]) {
-      img <- resize(img, w = 100)
+      img <- resize(img, w = rsize)
     } else {
-      img <- resize(img, h = 100)
+      img <- resize(img, h = rsize)
     }
   }
   
