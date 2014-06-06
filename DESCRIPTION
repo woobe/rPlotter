@@ -1,8 +1,8 @@
 Package: rPlotter
 Type: Package
 Title: rPlotter: Easy Plotting in R
-Version: 0.0.4
-Date: 2014-06-02
+Version: 0.0.5
+Date: 2014-06-06
 Author: Jo-fai Chow
 Maintainer: Jo-fai Chow <jofai.chow@gmail.com>
 Description: A collection of wrapper functions for graphics. The objective of this package is to make plotting easier for R beginners.

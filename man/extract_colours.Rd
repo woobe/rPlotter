@@ -4,12 +4,16 @@
 \title{Detect and extract dominant colours from an image}
 \usage{
 extract_colours(url_img = "http://developer.r-project.org/Logo/Rlogo-1.png",
-  num_col = 5)
+  num_col = 5, rsize = 100)
 }
 \arguments{
 \item{url_img}{URL of the image (can be PNG, JPG, JPEG, TIFF) or a local file}
 
 \item{num_col}{Number of dominant colours to be extracted (default = 5)}
+
+\item{rsize}{Size to reduce original image to, for further processing. This is the size, in pixels,
+for the largest dimension, from which colours are extracted. Please be careful with this option, as setting it
+too high can result in an extremely large processing time (or even running out of physical memory).}
 }
 \description{
 This function downloads an image and extracts the dominant colours from it.
