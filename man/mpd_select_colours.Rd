@@ -17,6 +17,12 @@ mpd_select_colours(pal, sat.thresh = NULL, light.thresh = NULL,
 \item{sat.thresh}{Minimum luminosity of colours in resulting palette (between 0 and 1)}
 
 \item{nreps}{The number of samples of the new colour palette to perform for brute force optimization of MPD}
+
+\item{ncolours}{The number of colours to select for the new palette}
+
+\item{nreturn}{The number of palettes to return
+\value{ If nreturn > 1 then a list of length nreturn, each element of which is a character vector of length ncolours consisting of hexidecimal colour codes,
+else a character vector of length ncolours consisting of hexidecimal colour codes }}
 }
 \description{
 This function takes a palette as a character vector of hexidecimal colours, and returns a smaller palette,
