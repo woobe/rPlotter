@@ -9,7 +9,8 @@ Authors@R: c(
     role = c("aut", "cre")
   ))
 Maintainer: Jo-fai Chow <jofai.chow@gmail.com>
-Description: A collection of wrapper functions for graphics. The objective of this package is to make plotting easier for R beginners.
+Description: A collection of wrapper functions for graphics. The objective of
+    this package is to make plotting easier for R beginners.
 License: MIT
 Depends:
     R (>= 3.0.0),

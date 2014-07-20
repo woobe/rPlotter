@@ -13,8 +13,9 @@ require(colorspace)
 #' @param nreps The number of samples of the new colour palette to perform for brute force optimization of MPD
 #' @param ncolours The number of colours to select for the new palette
 #' @param nreturn The number of palettes to return
-#' \value{ If nreturn > 1 then a list of length nreturn, each element of which is a character vector of length ncolours consisting of hexidecimal colour codes, 
-#' else a character vector of length ncolours consisting of hexidecimal colour codes }
+#' @return If nreturn > 1 then a list of length nreturn, each element of which is a character vector of length ncolours consisting of hexidecimal colour codes, 
+#' else a character vector of length ncolours consisting of hexidecimal colour codes
+#' @export
 mpd_select_colours <- function(pal, sat.thresh = NULL, light.thresh = NULL, dark.thresh = NULL, nreps = 10000, ncolours = ceiling(length(pal)/2), nreturn = 1) {
   if (ncolours > length(pal)) {
     stop("Number of colours to select must be less than the total number of colours in the palette")  
