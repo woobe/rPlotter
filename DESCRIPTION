@@ -19,4 +19,6 @@ Depends:
     EBImage,
     reshape2,
     rblocks,
-    dichromat
+    dichromat,
+    picante,
+    colorspace

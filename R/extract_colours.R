@@ -3,7 +3,8 @@
 #' This function downloads an image and extracts the dominant colours from it. 
 #' The code is based on dsparks' gist (https://gist.github.com/dsparks/3980277).
 #' 
-#' @param url_img URL of the image (can be PNG, JPG, JPEG, TIFF) or a local file
+#' @param url_img URL of the image (can be PNG, JPG, JPEG, TIFF) or a local file. Can also
+#' be an \code{EBImage} "Image" object
 #' @param num_col Number of dominant colours to be extracted (default = 5)
 #' @param rsize Size to reduce original image to, for further processing. This is the size, in pixels, 
 #' for the largest dimension, from which colours are extracted. Please be careful with this option, as setting it 

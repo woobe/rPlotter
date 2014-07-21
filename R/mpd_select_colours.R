@@ -9,11 +9,11 @@ require(colorspace)
 #' @param pal A palette as a character vector containing hexidecimal coded colours
 #' @param sat.thresh Minimum saturation of colours in resulting palette (between 0 and 1)
 #' @param light.thresh Maximum luminosity of colours in resulting palette (between 0 and 1)
-#' @param sat.thresh Minimum luminosity of colours in resulting palette (between 0 and 1)
+#' @param dark.thresh Minimum luminosity of colours in resulting palette (between 0 and 1)
 #' @param nreps The number of samples of the new colour palette to perform for brute force optimization of MPD
 #' @param ncolours The number of colours to select for the new palette
 #' @param nreturn The number of palettes to return
-#' @return If nreturn > 1 then a list of length nreturn, each element of which is a character vector of length ncolours consisting of hexidecimal colour codes, 
+#' @return If \code{nreturn} > 1 then a list of length \code{nreturn}, each element of which is a character vector of length ncolours consisting of hexidecimal colour codes, 
 #' else a character vector of length ncolours consisting of hexidecimal colour codes
 #' @export
 mpd_select_colours <- function(pal, sat.thresh = NULL, light.thresh = NULL, dark.thresh = NULL, nreps = 10000, ncolours = ceiling(length(pal)/2), nreturn = 1) {
