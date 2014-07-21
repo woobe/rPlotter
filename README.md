@@ -10,6 +10,8 @@ This package depends on the following packages:
 - stringr (available on CRAN)
 - reshape2 (available on CRAN)
 - dichromat (available on CRAN)
+- picante (available on CRAN)
+- colorspace (available on CRAN)
 - EBImage (available on Bioconductor)
 - rblocks (available on GitHub)
 

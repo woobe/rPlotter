@@ -8,7 +8,8 @@
 #' set.seed(1234)
 #' pal_pf <- extract_colours("http://www.scoutlondon.com/blog/wp-content/uploads/2012/05/Pulp-Fiction.jpg")
 #' simulate_colours(pal_pf)
-#' 
+#' @export
+#' @import dichromat
 
 simulate_colours <- function(inp_col) {
   

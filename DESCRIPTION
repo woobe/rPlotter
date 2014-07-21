@@ -4,10 +4,10 @@ Title: rPlotter: Easy Plotting in R
 Version: 0.0.7
 Date: 2014-06-12
 Authors@R: c(
-  person("Russell", "Dinnage", role = "ctb"),
-  person("Jo-fai", "Chow", email = "jofai.chow@gmail.com", 
+    person("Russell", "Dinnage", role = "ctb"),
+    person("Jo-fai", "Chow", email = "jofai.chow@gmail.com",
     role = c("aut", "cre")
-  ))
+    ))
 Maintainer: Jo-fai Chow <jofai.chow@gmail.com>
 Description: A collection of wrapper functions for graphics. The objective of
     this package is to make plotting easier for R beginners.
@@ -19,6 +19,7 @@ Depends:
     EBImage,
     reshape2,
     rblocks,
-    dichromat,
+    dichromat
+Imports:
     picante,
     colorspace
