@@ -10,6 +10,7 @@
 #' inp_col <- extract_colours("http://www.scoutlondon.com/blog/wp-content/uploads/2012/05/Pulp-Fiction.jpg")
 #' out_col <- interpolate_colours(inp_col, n_col = 20)
 #' display_colours(out_col)
+#' @export
 
 interpolate_colours <- function(inp_col, n_col) {
   

@@ -1,5 +1,3 @@
-require(picante)
-require(colorspace)
 #' Select colours from a palette to maximize perceptual distance between the colours
 #' 
 #' This function takes a palette as a character vector of hexidecimal colours, and returns a smaller palette, 
@@ -9,12 +7,15 @@ require(colorspace)
 #' @param pal A palette as a character vector containing hexidecimal coded colours
 #' @param sat.thresh Minimum saturation of colours in resulting palette (between 0 and 1)
 #' @param light.thresh Maximum luminosity of colours in resulting palette (between 0 and 1)
-#' @param sat.thresh Minimum luminosity of colours in resulting palette (between 0 and 1)
+#' @param dark.thresh Minimum luminosity of colours in resulting palette (between 0 and 1)
 #' @param nreps The number of samples of the new colour palette to perform for brute force optimization of MPD
 #' @param ncolours The number of colours to select for the new palette
 #' @param nreturn The number of palettes to return
-#' \value{ If nreturn > 1 then a list of length nreturn, each element of which is a character vector of length ncolours consisting of hexidecimal colour codes, 
-#' else a character vector of length ncolours consisting of hexidecimal colour codes }
+#' @return If \code{nreturn} > 1 then a list of length \code{nreturn}, each element of which is a character vector of length ncolours consisting of hexidecimal colour codes, 
+#' else a character vector of length ncolours consisting of hexidecimal colour codes
+#' @importFrom picante mpd
+#' @import colorspace
+#' @export
 mpd_select_colours <- function(pal, sat.thresh = NULL, light.thresh = NULL, dark.thresh = NULL, nreps = 10000, ncolours = ceiling(length(pal)/2), nreturn = 1) {
   if (ncolours > length(pal)) {
     stop("Number of colours to select must be less than the total number of colours in the palette")  
@@ -22,35 +23,19 @@ mpd_select_colours <- function(pal, sat.thresh = NULL, light.thresh = NULL, dark
   if (ncolours < 2) {
     stop("You must select at least two colours")  
   }
-  require(colorspace)
-  require(picante)
-  ## convert hex colours to RGB space
-  cols <- hex2RGB(pal, gamma = TRUE)
-  rownames(cols@coords) <- pal
-  ## get rid of low saturation colours if desired
-  if (!is.null(sat.thresh)) {
-    cols <- cols[coords(as(cols, "HLS"))[,3] > sat.thresh,] 
-  }
-  ## convert colours to CIELAB colorspace
-  cols.LAB <- coords(as(cols, "LAB"))
-  ## get rid of light colours if desired
-  if (!is.null(light.thresh)) {
-    ## convert light thresholds from proportions into L*A*B* scale
-    light.thresh <- ceiling((1-light.thresh)*100)
-    cols.LAB <- cols.LAB[cols.LAB[,1] < light.thresh,] 
-  }
-  ## get rid of dark colours if desired
-  if (!is.null(dark.thresh)) {
-    ## convert dark thresholds from proportions into L*A*B* scale (perceptual)
-    dark.thresh <- ceiling(dark.thresh*100)
-    cols.LAB <- cols.LAB[cols.LAB[,1] > dark.thresh,] 
-  }
-  if (is.null(nrow(cols.LAB))) {
+  ## get rid of undesirable colours
+  pal_red <- palette_reduce(pal, sat.thresh = sat.thresh, light.thresh = light.thresh, dark.thresh = dark.thresh)
+  if (length(pal_red) == 0) {
     stop("No colours after thresholding")  
   }
-  if (nrow(cols.LAB) < 2) {
+  if (length(pal_red) < 2) {
     stop("Too few colours after thresholding")  
   }
+  ## convert hex colours to RGB space
+  cols <- hex2RGB(pal_red, gamma = TRUE)
+  rownames(cols@coords) <- pal_red
+  ## convert colours to CIELAB colorspace
+  cols.LAB <- coords(as(cols, "LAB"))
   ## generate distances between all colours in perceptual space
   col_dists <- dist(cols.LAB)
   ## randomly sample nreps palettes of ncolours

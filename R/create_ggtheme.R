@@ -7,7 +7,8 @@
 #' @examples
 #' theme_blank <- create_ggtheme("blank")
 #' theme_xkcd <- create_ggtheme("xkcd")
-#' 
+#' @export
+#' @import ggplot2 stringr
  
 
 create_ggtheme <- function(theme = "blank") {

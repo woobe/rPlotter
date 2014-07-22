@@ -2,7 +2,7 @@
 #' 
 #' This function creates a radar chart. 
 #' Original Code: http://statisticstoproveanything.blogspot.co.uk/2013/11/spider-web-plots-in-r.html
-#' 
+#' @export
 
 plot_radar <- function(data, data.row = NULL, y.cols = NULL, main = NULL, add = F, 
                        col = "red", lty = 1, scale = T) {
