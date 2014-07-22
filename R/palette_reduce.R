@@ -9,11 +9,13 @@ palette_reduce <- function(pal, sat.thresh = NULL, light.thresh = NULL, dark.thr
   cols <- hex2RGB(pal, gamma = TRUE)
   if (!is.null(sat.thresh)) {
     pal <- pal[coords(as(cols, "HLS"))[,3] > sat.thresh] 
+    cols <- hex2RGB(pal, gamma = TRUE)
   }
   if (!is.null(light.thresh)) {
     ## convert light thresholds from proportions into L*A*B* scale
     light.thresh <- ceiling((1-light.thresh)*100)
-    pal <- pal[coords(as(cols, "LAB"))[,1] < light.thresh] 
+    pal <- pal[coords(as(cols, "LAB"))[,1] < light.thresh]
+    cols <- hex2RGB(pal, gamma = TRUE)
   }
   ## get rid of dark colours if desired
   if (!is.null(dark.thresh)) {
