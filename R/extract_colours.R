@@ -35,7 +35,11 @@ extract_colours <- function(
   url_img = "http://developer.r-project.org/Logo/Rlogo-1.png", num_col = 5, rsize = 100) {
   
   ## Read Image
-  img <- readImage(url_img) # local file or url
+  if (class(url_img) != "Image") {
+    img <- readImage(url_img) # local file or url
+  } else {
+    img <- url_img # is already a loaded "Image"
+  }
   
   ## Resize Image (make it smaller so the remaining tasks run faster)  
   if (max(dim(img)[1:2]) > rsize) {
