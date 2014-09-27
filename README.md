@@ -30,7 +30,7 @@ library(devtools)
 install_github("ramnathv/rblocks")
 
 ## And finally ...
-nstall_github("woobe/rPlotter")
+install_github("woobe/rPlotter")
 ```
 
 ## Example: extract_colours(...)
