@@ -17,7 +17,7 @@ This package depends on the following packages:
 
 ## Installation
 
-```
+```r
 ## CRAN Packages
 install.packages(c("ggplot2", "stringr", "reshape2", "dichromat"))
 
@@ -37,10 +37,10 @@ install_github("woobe/rPlotter")
 
 This function extracts dominant colours from images and then returns colour hex code.
 
-```
+```r
 library(rPlotter)
 ```
-```
+```r
 ## Using the R Logo
 pal_r <- extract_colours("http://developer.r-project.org/Logo/Rlogo-1.png")
 par(mfrow = c(1,2))
@@ -50,7 +50,7 @@ hist(Nile, breaks = 5, col = pal_r, main = "Palette based on R Logo")
 
 ![output_1a](http://i.imgur.com/41Q40Hk.png)
 
-```
+```r
 ## Using a poster from the movie "Kill Bill"
 pal_kb <- extract_colours("http://www.moviegoods.com/Assets/product_images/1010/477803.1010.A.jpg")
 par(mfrow = c(1,2))
@@ -60,7 +60,7 @@ hist(Nile, breaks = 5, col = pal_kb, main = "Palette based on Kill Bill")
 
 ![output_1b](http://i.imgur.com/XUqOTSk.png)
 
-```
+```r
 ## Using Homer Simpson
 pal_s <- extract_colours("http://haphappy.com/wp-content/uploads/2011/03/homerbeer2.png")
 par(mfrow = c(1,2))
@@ -75,7 +75,7 @@ hist(Nile, breaks = 5, col = pal_s, main = "Palette based on Simpsons")
 
 This function displays colours as rblocks.
 
-```
+```r
 set.seed(1234)
 pal_pf <- extract_colours("http://www.scoutlondon.com/blog/wp-content/uploads/2012/05/Pulp-Fiction.jpg")
 display_colours(pal_pf)
@@ -87,7 +87,7 @@ display_colours(pal_pf)
 
 The functions simulates three types of colour blindness and then displays the simulated colours as rblocks.
 
-```
+```r
 set.seed(1234)
 pal_pf <- extract_colours("http://www.scoutlondon.com/blog/wp-content/uploads/2012/05/Pulp-Fiction.jpg")
 simulate_colours(pal_pf)
